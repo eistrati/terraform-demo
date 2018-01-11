@@ -15,8 +15,6 @@ class Assertion {
     targetPath) {
     const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._targetPath), this._index);
     try {
-      
-    await t  
       const element = await Selector(reqArgSelector);
       const elementText = (await element.innerText).trim();
 
