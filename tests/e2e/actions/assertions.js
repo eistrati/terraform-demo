@@ -13,18 +13,22 @@ class Assertion {
    * @param {String} target 
    * @param {String} idCheckFailMsg 
    */
-  
+
   async requiredArguments(
     reqArgKey,
-    reqArgSelector, 
-    target, 
-    reqArgMsg, 
+    reqArgSelector,
+    target,
+    reqArgMsg,
     targetPath) {
     const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._targetPath), this._index);
     try {
+
+      const element = await Selector(reqArgSelector);
+      const elementText = (await element.innerText).trim();
+
       await t
-        .hover(Selector(reqArgSelector))
-        .expect(Selector(reqArgSelector).innerText)
+        .hover(element)
+        .expect(elementText)
         .eql(sourceFileParser.getRequiredArguments(target, reqArgKey))
     } catch (e) {
       throw new Error(`${reqArgMsg}`)

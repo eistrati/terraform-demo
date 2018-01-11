@@ -31,7 +31,7 @@
           "message": "No Resource ID found matching filter criteria from parsed tfstate file"
         },
         "status": {
-          "key": "status",
+          "key": "instance_state",
           "selector": "#gwt-debug-gridTable > div:nth-child(3) > div > div:nth-child(2) > div > div > table > tbody > tr > td:nth-child(6) > div",
           "message": "Status check for 'ec2' resource does not match parsed tftsate value"
         }
