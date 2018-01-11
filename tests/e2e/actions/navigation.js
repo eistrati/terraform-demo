@@ -21,8 +21,7 @@ class Navigation {
   async navigateToEc2Page(target) {
     const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._targetPath), this._index);
     await t
-      // .navigateTo(`https://${sourceFileParser.getRegion(target)}.console.aws.amazon.com/ec2/v2/home?region=${sourceFileParser.getRegion(target)}`)
-      .navigateTo(`https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Instances`)
+      .navigateTo(`https://${sourceFileParser.getRegion(target)}.console.aws.amazon.com/ec2/v2/home?region=${sourceFileParser.getRegion(target)}#Instances`)
   }
 }
 
