@@ -32,9 +32,9 @@ provider "aws" {
 #	region = "${module.vpc-info.region}"
 #}
 
-provider "vault" {
-  address = "${var.vault_address}"
-  #token = "${var.vault_token}"
-  #Terraform will attempt to read it from ~/.vault-token (where the vault command stores its current token)
-  max_lease_ttl_seconds = "${var.vault_max_lease_ttl_seconds}"
-}
+# provider "vault" {
+#  address = "${var.vault_address}"
+#  token = "${var.vault_token}"
+#  Terraform will attempt to read it from ~/.vault-token (where the vault command stores its current token)
+#  max_lease_ttl_seconds = "${var.vault_max_lease_ttl_seconds}"
+#}

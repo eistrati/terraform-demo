@@ -1,6 +1,6 @@
-data "vault_generic_secret" "db_credentials" {
- path = "secret/db_creds"
-}
+#data "vault_generic_secret" "db_credentials" {
+# path = "secret/db_creds"
+#}
 
 resource "aws_instance" "EC2Instance" {
   tags {
@@ -42,8 +42,8 @@ resource "aws_db_instance" "RdsInstance" {
   name              = "${var.database_name}"
 #  username          = "${var.database_user}"
 #  password          = "${var.database_password}"
-  username          = "${data.vault_generic_secret.db_credentials.data["database_user"]}"
-  password          = "${data.vault_generic_secret.db_credentials.data["database_password"]}"
+#  username          = "${data.vault_generic_secret.db_credentials.data["database_user"]}"
+#  password          = "${data.vault_generic_secret.db_credentials.data["database_password"]}"
   port              = "${var.database_port}"
 
   # we want the multi-az setting to be toggleable, but off by default
