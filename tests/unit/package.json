@@ -1,0 +1,14 @@
+{
+  "name": "unit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "healthcheck.spec.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexandr Vozicov",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^4.1.2"
+  }
+}
