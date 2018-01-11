@@ -14,7 +14,9 @@ Terraform demo integrated with CI & CD pipeline
 - `npm install -g recink`
 - `npm install -g recink-terraform`
 
-# Local Usage
+# Usage
 
 - Clone the example `git clone git@github.com:MitocGroup/terraform-demo.git`
-- Run `AWS_DEFAULT_REGION='us-west-2' AWS_ACCESS_KEY_ID='xxx' AWS_SECRET_ACCESS_KEY='xxx' recink run terraform terraform-demo/ -s cache`
+- `cd terraform-demo`
+- Update the code
+- Create PR with the latest changes
