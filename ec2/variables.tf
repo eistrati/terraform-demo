@@ -7,11 +7,11 @@ variable "access_key" {}
 variable "secret_key" {}
 
 variable "vpc_id" {
-  default = "vpc-80f8c5e6"
+  default = "vpc-a0c91fc5"
 }
 
 variable "subnet_id" {
-  default = "subnet-feb8dcb6"
+  default = "subnet-00319365"
 }
 
 variable "availability_zone" {
@@ -23,7 +23,7 @@ variable "instance_type" {
 }
 
 variable "security_groups" {
-  default = [ "sg-c84b75b5" ]
+  default = [ "sg-25442640" ]
 }
 
 variable "ami_id" {
