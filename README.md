@@ -1,10 +1,6 @@
 Terraform demo integrated with CI & CD pipeline
 ===============================================
 
-[![Build Status](https://travis-ci.com/MitocGroup/terraform-demo.svg?token=K6deyi9kwkfxRyXwcv6c&branch=master)](https://travis-ci.com/MitocGroup/terraform-demo)
-[![Test Coverage](https://codeclimate.com/repos/59bad9b6adaa0e02800002a0/badges/befcd82a20a31745b6ae/coverage.svg)](https://codeclimate.com/repos/59bad9b6adaa0e02800002a0)
-
-
 # Prerequisites
 
 - [x] Git >= v1.x
