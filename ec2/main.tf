@@ -1,7 +1,3 @@
-data "vault_generic_secret" "db_credentials" {
- path = "secret/db_creds"
-}
-
 resource "aws_instance" "EC2Instance" {
   tags {
     Name = "TerraformInstance"
