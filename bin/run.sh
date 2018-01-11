@@ -13,15 +13,15 @@ on_fail() {
 }
 
 echo "Running 'recink run terraform' ..."
-recink run terraform --include-modules="rds_restore" --custom-config="rds_restore.terraform.plan:true,rds_restore.terraform.apply:false,rds_restore.terraform.save-show-output:terraform-show.txt" || on_fail
+recink run terraform --include-modules="ec2" --custom-config="ec2.terraform.plan:true,ec2.terraform.apply:false,ec2.terraform.save-show-output:terraform-show.txt" || on_fail
 recink run unit || on_fail
-recink run terraform --include-modules="rds_restore" --custom-config="rds_restore.terraform.plan:false,rds_restore.terraform.apply:true" || on_fail
+recink run terraform --include-modules="ec2" --custom-config="ec2.terraform.plan:false,ec2.terraform.apply:true" || on_fail
 
-TF_STATE=${APP_PATH}/rds_restore/.resource/terraform.tfstate
+TF_STATE=${APP_PATH}/ec2/.resource/terraform.tfstate
 if [ -f ${TF_STATE} ]; then
    echo "Copying .tfstate files to tests directory"
-   mkdir -p ${APP_PATH}/tests/e2e/rds_restore/.resource/
-   cp ${TF_STATE} ${APP_PATH}/tests/e2e/rds_restore/.resource/terraform.tfstate.json
+   mkdir -p ${APP_PATH}/tests/e2e/ec2/.resource/
+   cp ${TF_STATE} ${APP_PATH}/tests/e2e/ec2/.resource/terraform.tfstate.json
    echo "Running 'recink run e2e' ..."
    recink run e2e || on_fail
 else
