@@ -2,6 +2,10 @@ variable "region" {
   default = "us-west-2"
 }
 
+variable "access_key" {}
+
+variable "secret_key" {}
+
 variable "vpc_id" {
   default = "vpc-80f8c5e6"
 }
