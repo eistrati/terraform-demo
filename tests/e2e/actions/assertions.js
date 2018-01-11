@@ -7,13 +7,6 @@ class Assertion {
     this._index = index;
   }
 
-  /**
-   * Compare resource ID value between source file and web page UI
-   * @param {String} idSelector 
-   * @param {String} target 
-   * @param {String} idCheckFailMsg 
-   */
-
   async requiredArguments(
     reqArgKey,
     reqArgSelector,
@@ -22,7 +15,6 @@ class Assertion {
     targetPath) {
     const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._targetPath), this._index);
     try {
-
       const element = await Selector(reqArgSelector);
       const elementText = (await element.innerText).trim();
 

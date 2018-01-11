@@ -25,6 +25,7 @@
     "test": {
       "path": "../suite/services/ec2.js",
       "requiredArguments": {
+        "searchInput": "#gwt-debug-pill-0 > div.KKB > input",
         "id": {
           "key":"id",
           "selector": "#gwt-debug-gridTable > div:nth-child(3) > div > div:nth-child(2) > div > div > table > tbody > tr > td:nth-child(3) > div",
@@ -32,7 +33,7 @@
         },
         "status": {
           "key": "instance_state",
-          "selector": "#gwt-debug-gridTable > div:nth-child(3) > div > div:nth-child(2) > div > div > table > tbody > tr > td:nth-child(6) > div",
+          "selector": "#gwt-debug-gridTable > div:nth-child(3) > div > div:nth-child(2) > div > div > table > tbody > tr > td:nth-child(6) > div > span",
           "message": "Status check for 'ec2' resource does not match parsed tftsate value"
         }
     },
