@@ -22,7 +22,6 @@ class Assertion {
     targetPath) {
     const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._targetPath), this._index);
     try {
-      console.log(reqArgSelector);
       await t
         .hover(Selector(reqArgSelector))
         .expect(Selector(reqArgSelector).innerText)
