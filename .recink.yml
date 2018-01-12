@@ -4,20 +4,6 @@ $:
     '$.terraform.vars.access_key': 'eval'
     '$.terraform.vars.secret_key': 'eval'
     '$.terraform.vars.region': 'eval'
-    #'$.cache.options.0': 'eval'
-    #'$.cache.options.1.region': 'eval'
-    #'$.cache.options.1.accountId': 'eval'
-    #'$.cache.options.1.roleName': 'eval'
-    '$.comment.providers.github.0.token': 'eval'
-  #cache:
-  #  driver: 's3'
-  #  options:
-  #    #- '"s3://travis-metadata/cache/MitocGroup/terraform-demo/" + process.env.TRAVIS_BRANCH'
-  #    - 's3://travis-metadata/cache/MitocGroup/terraform-demo/'
-  #    -
-  #      region: 'process.env.AWS_DEFAULT_REGION'
-  #      accountId: 'process.env.AWS_ACCOUNT_ID'
-  #      roleName: 'process.env.AWS_ROLE_NAME'
   emit:
     pattern:
       - /.+\.js.*$/i
@@ -31,10 +17,6 @@ $:
       access_key: 'process.env.AWS_ACCESS_KEY_ID'
       secret_key: 'process.env.AWS_SECRET_ACCESS_KEY'
       region: 'process.env.AWS_DEFAULT_REGION'
-  comment:
-    providers:
-      github:
-        - token: 'process.env.GITHUB_TOKEN'
   npm:
     scripts: []
     dependencies:
@@ -73,19 +55,25 @@ $:
 #    vars:
 #      region: 'us-west-1'
 
-#ec2:
-#  root: './ec2'
-#  terraform:
-#    version: 0.11.0
-#    vars:
-#      region: 'us-west-2'
-
-rds_restore:
-  root: './rds_restore'
+ec2:
+  root: './ec2'
   terraform:
     version: 0.11.0
-    vars:
-      region: 'us-west-2'
+#    test:
+#      plan: './tests/unit/ec2'
+#      apply: './tests/e2e/ec2/'
+    # vars:
+    #   region: 'us-west-2'
+
+#rds_restore:
+#  root: './rds_restore'
+#  terraform:
+#    version: 0.11.0
+#    test:
+#      plan: './tests/unit/ec2'
+#      apply: './tests/e2e/ec2/'
+#    vars:
+#      region: 'us-west-2'
 
 e2e:
  root: './tests/e2e/'
