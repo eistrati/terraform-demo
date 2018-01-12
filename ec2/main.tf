@@ -1,7 +1,7 @@
 resource "aws_instance" "EC2Instance" {
   tags {
     Name = "TerraformInstance"
-    Description = "Terraform Descriptions"
+    Description = "Terraform Description"
   }
 
   # VPC
