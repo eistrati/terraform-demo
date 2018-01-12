@@ -62,8 +62,8 @@ ec2:
 #    test:
 #      plan: './tests/unit/ec2'
 #      apply: './tests/e2e/ec2/'
-    # vars:
-    #   region: 'us-west-2'
+    vars:
+      region: 'us-west-2'
 
 #rds_restore:
 #  root: './rds_restore'
