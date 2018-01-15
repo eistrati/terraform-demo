@@ -8,7 +8,7 @@ const sourceFiles = [];
 
 // fixture`` is required to perform execution 
 
-walkDir(path.join(__dirname, '../../../ec2/.resource/'), /.*\.tfstate$/, (res) => {
+walkDir(path.join(__dirname, '../../../ec2/.resource/'), /.*\.tfstate\.remote$/, (res) => {
   sourceFiles.push(res);
 });
 

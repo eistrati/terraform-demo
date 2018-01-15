@@ -18,9 +18,7 @@ recink run terraform --include-modules="ec2" --custom-config="ec2.terraform.plan
 recink run unit || on_fail
 recink run terraform --include-modules="ec2" --custom-config="ec2.terraform.plan:true,ec2.terraform.apply:true" || on_fail
 
-ls -al ${APP_PATH}/ec2/.resource/
-
-if [ -f "${APP_PATH}/ec2/.resource/terraform.tfstate" ]; then
+if [ -f "${APP_PATH}/ec2/.resource/terraform.tfstate.remote" ]; then
    echo "Running 'recink run e2e' ..."
    recink run e2e || on_fail
 else
