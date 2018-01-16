@@ -14,7 +14,7 @@ function on_fail() {
 }
 
 echo "Running 'recink run terraform' ..."
-recink run terraform --include-modules="ec2" --custom-config="ec2.terraform.plan:true,ec2.terraform.apply:false,ec2.terraform.save-show-output:tfshow.txt" || on_fail
+recink run terraform -vv --include-modules="ec2" --custom-config="ec2.terraform.plan:true,ec2.terraform.apply:false,ec2.terraform.save-show-output:tfshow.txt" || on_fail
 recink run unit || on_fail
 recink run terraform --include-modules="ec2" --custom-config="ec2.terraform.plan:true,ec2.terraform.apply:true" || on_fail
 
