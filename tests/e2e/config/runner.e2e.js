@@ -18,8 +18,11 @@ if (sourceFiles.length === 0) {
 }
 
 for (const targetPath of sourceFiles) {
-  const source = require(targetPath);
-  const sourceFileTargets = source.modules.forEach((item, index) => {
+  let tfstateObj = fs.readFileSync(targetPath, 'utf8');
+  let tfstateContent = JSON.parse(tfstateObj);
+
+  // const tfstate = require(obj);
+  const sourceFileTargets = tfstateContent.modules.forEach((item, index) => {
     const resources = item.resources;
     const targets = Object.keys(resources).map((key) => {
       if (mapping.hasOwnProperty(resources[key].type)) {
