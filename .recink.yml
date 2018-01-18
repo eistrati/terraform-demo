@@ -37,7 +37,7 @@ $:
       take-on-fail: true
       path: './tests/e2e/screenshots'
     browsers:
-      - firefox --headless
+      - firefox
 
 #vpc1:
 #  root: './vpc1'

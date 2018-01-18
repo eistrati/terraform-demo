@@ -1,20 +1,32 @@
 import { Selector, t } from 'testcafe';
 import { SourceFileLoader, SourceFileParser } from '../helpers';
 
+// class Search {
+//   constructor(pathToTfstateFile, resourceTargetIndex = 0) {
+//     this._pathToTfstateFile = pathToTfstateFile;
+//     this._resourceTargetIndex = resourceTargetIndex;
+//   }
+
+//   async targetResource(searchInputSelector, resourceTarget) {
+//     const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._pathToTfstateFile), this._resourceTargetIndex);
+      
+//     await t
+//       .typeText(searchInputSelector, (sourceFileParser.getResourceId(resourceTarget)))
+//       .pressKey('enter');
+//   }
+// }
+
 class Search {
-  constructor(targetPath, index = 0) {
-    this._targetPath = targetPath;
-    this._index = index;
+  constructor(pathToTfstateFile, resourceTargetIndex = 0) {
+    this._pathToTfstateFile = pathToTfstateFile;
+    this._resourceTargetIndex = resourceTargetIndex;
   }
 
-  async targetResource(
-    searchInput,
-    target,
-    targetPath) {
-    const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._targetPath), this._index);
+  async targetResource(searchInputSelector, resourceTarget, hardcodedValue) {
+    const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._pathToTfstateFile), this._resourceTargetIndex);
       
     await t
-      .typeText(searchInput, (sourceFileParser.getResourceId(target)))
+      .typeText(searchInputSelector, hardcodedValue)
       .pressKey('enter');
   }
 }

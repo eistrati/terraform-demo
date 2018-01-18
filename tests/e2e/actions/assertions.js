@@ -1,19 +1,45 @@
 import { Selector, t } from 'testcafe';
 import { SourceFileLoader, SourceFileParser } from '../helpers';
 
+// class Assertion {
+//   constructor(pathToTfstateFile, resourceTargetIndex = 0) {
+//     this._pathToTfstateFile = pathToTfstateFile;
+//     this._resourceTargetIndex = resourceTargetIndex;
+//   }
+
+//   async requiredArguments(
+//     reqArgKey,
+//     reqArgSelector,
+//     resourceTarget,
+//     reqArgErrorMsg) {
+//     const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._pathToTfstateFile), this._resourceTargetIndex);
+//     try {
+//       const element = await Selector(reqArgSelector);
+//       const elementText = (await element.innerText).trim();
+
+//       await t
+//         .hover(element)
+//         .expect(elementText)
+//         .eql(sourceFileParser.getRequiredArguments(resourceTarget, reqArgKey))
+//     } catch (e) {
+//       throw new Error(`${reqArgErrorMsg}`)
+//     }
+//   }
+// }
+
 class Assertion {
-  constructor(targetPath, index = 0) {
-    this._targetPath = targetPath;
-    this._index = index;
+  constructor(pathToTfstateFile, resourceTargetIndex = 0) {
+    this._pathToTfstateFile = pathToTfstateFile;
+    this._resourceTargetIndex = resourceTargetIndex;
   }
 
   async requiredArguments(
     reqArgKey,
     reqArgSelector,
-    target,
-    reqArgMsg,
-    targetPath) {
-    const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._targetPath), this._index);
+    resourceTarget,
+    reqArgErrorMsg,
+    hardcodedValue) {
+    const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._pathToTfstateFile), this._resourceTargetIndex);
     try {
       const element = await Selector(reqArgSelector);
       const elementText = (await element.innerText).trim();
@@ -21,9 +47,9 @@ class Assertion {
       await t
         .hover(element)
         .expect(elementText)
-        .eql(sourceFileParser.getRequiredArguments(target, reqArgKey))
+        .eql(hardcodedValue)
     } catch (e) {
-      throw new Error(`${reqArgMsg}`)
+      throw new Error(`${reqArgErrorMsg}`)
     }
   }
 }

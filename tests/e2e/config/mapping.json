@@ -39,5 +39,29 @@
     },
     "docs": "https://www.terraform.io/docs/providers/aws/d/db_snapshot.html"
     }
+  },
+  "aws_vpc": {
+    "service": "vpc",
+    "target": "aws_vpc",
+    "serviceNamePostfix": "vpcs",
+    "test": {
+      "path": "../suite/services/vpc.js",
+      "requiredArguments": {
+        "search": {
+          "selector": "#gwt-debug-resourceFilterBox"
+        },
+        "id": {
+          "key":"id",
+          "selector": "#gwt-debug-gridTable > table > tbody:nth-child(3) > tr > td:nth-child(3) > div",
+          "message": "No VPCs found that match parsed tftsate value"
+        },
+        "status": {
+          "key": "instance_state",
+          "selector": "#gwt-debug-gridTable > table > tbody:nth-child(3) > tr > td:nth-child(4) > div > span",
+          "message": "Status check for 'VPC' resource does not match parsed tftsate value"
+        }
+    },
+    "docs": "https://www.terraform.io/docs/providers/aws/d/vpc.html"
+    }
   }
 }
