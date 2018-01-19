@@ -1,29 +1,19 @@
 import { Selector, t } from 'testcafe';
-import { SourceFileLoader, SourceFileParser } from '../helpers';
 
 class Assertion {
-  constructor(targetPath, index = 0) {
-    this._targetPath = targetPath;
-    this._index = index;
-  }
+  constructor() { }
 
-  async requiredArguments(
-    reqArgKey,
-    reqArgSelector,
-    target,
-    reqArgMsg,
-    targetPath) {
-    const sourceFileParser = new SourceFileParser(await SourceFileLoader(this._targetPath), this._index);
+  async requiredArguments(testData, selector, errorMessage) {
     try {
-      const element = await Selector(reqArgSelector);
+      const element = await Selector(selector);
       const elementText = (await element.innerText).trim();
 
       await t
         .hover(element)
         .expect(elementText)
-        .eql(sourceFileParser.getRequiredArguments(target, reqArgKey))
+        .eql(testData)
     } catch (e) {
-      throw new Error(`${reqArgMsg}`)
+      throw new Error(`${errorMessage}`)
     }
   }
 }

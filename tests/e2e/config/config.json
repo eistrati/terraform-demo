@@ -1,0 +1,80 @@
+{
+  "vpc_dashboard": {
+    "resources": {
+      "aws_vpc": {
+        "urlPreFix": "vpc",
+        "urlPostFix": "vpcs",
+        "idErrorMsg": "No VPCs found that match parsed tftsate value",
+        "statusErrorMsg": "Status check for 'VPC' resource does not match parsed tftsate value"
+      },
+      "aws_subnet": {
+        "urlPreFix": "vpc",
+        "urlPostFix": "subnets",
+        "idErrorMsg": "No Subnets found that match parsed tftsate value",
+        "statusErrorMsg": "State check for 'Subnets' resource does not match parsed tftsate value"
+      },
+      "aws_route_table": {
+        "urlPreFix": "vpc",
+        "urlPostFix": "routetables",
+        "idErrorMsg": "No Route Tables found that match parsed tftsate value"
+      },
+      "aws_internet_gateway": {
+        "urlPreFix": "vpc",
+        "urlPostFix": "igws",
+        "idErrorMsg": "No Internet Gateways found that match parsed tftsate value",
+        "statusErrorMsg": "State check for 'Internet Gateways' resource does not match parsed tftsate value"
+      },
+      "aws_default_vpc_dhcp_options": {
+        "urlPreFix": "vpc",
+        "urlPostFix": "dhcpOptions",
+        "idErrorMsg": "No DHCP Options Sets found that match parsed tftsate value"
+      },
+      "aws_network_acl": {
+        "urlPreFix": "vpc",
+        "urlPostFix": "acls",
+        "idErrorMsg": "No Network ACLs found that match parsed tftsate value"
+      },
+      "aws_security_group": {
+        "urlPreFix": "vpc",
+        "urlPostFix": "securityGroups",
+        "idErrorMsg": "No Security Groups found that match parsed tftsate value",
+        "statusErrorMsg": "Status check for 'Security Groups' resource does not match parsed tftsate value"
+      }
+    },
+    "selectors": {
+      "searchInput": "#gwt-debug-resourceFilterBox",
+      "id": "#gwt-debug-gridTable > table > tbody:nth-child(3) > tr > td:nth-child(3) > div",
+      "status": "#gwt-debug-gridTable > table > tbody:nth-child(3) > tr > td:nth-child(4) > div > span"
+    }
+  },
+  "ec2": {
+    "resources": {
+      "aws_instance": {
+        "urlPreFix": "ec2/v2",
+        "urlPostFix": "Instances",
+        "idErrorMsg": "No EC2 found that match parsed tftsate value",
+        "statusErrorMsg": "Status check for 'EC2' instance does not match parsed tftsate value"
+      }
+    },
+    "selectors": {
+      "searchInput": "#gwt-debug-pill-0 > div.KKB > input",
+      "id": "#gwt-debug-gridTable > div:nth-child(3) > div > div:nth-child(2) > div > div > table > tbody > tr > td:nth-child(3) > div",
+      "status": "#gwt-debug-gridTable > div:nth-child(3) > div > div:nth-child(2) > div > div > table > tbody > tr > td:nth-child(6) > div > span"
+    }
+  },
+  "rds": {
+    "resources": {
+      "aws_db_instance": {
+        "urlPreFix": "rds",
+        "urlPostFix": "dbinstances",
+        "idErrorMsg": "No RDS found that match parsed tftsate value",
+        "statusErrorMsg": "Status check for 'RDS' instance does not match parsed tftsate value"
+      }
+    },
+    "selectors": {
+      "searchInput": "#rds-instances-filter-txtbx > span > awsui-input > span > input",
+      "id": "#rds-instances-tbl > div > div.awsui-table-container > table > tbody > tr > td:nth-child(2) > span > a",
+      "status": "#rds-instances-tbl > div > div.awsui-table-container > table > tbody > tr > td:nth-child(4) > span > span"
+    }
+  }
+}
