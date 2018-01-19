@@ -6,9 +6,9 @@ class Navigation {
   constructor() {
   }
   
-  async navigateTo(testData, urlPosFix) {
+  async navigateTo(testData, serviceName, urlPostFix) {
     await t
-      .navigateTo(`https://${testData.region}.console.aws.amazon.com/${testData.type}/home?region=${testData.region}#${urlPosFix}`)
+      .navigateTo(`https://${testData.region}.console.aws.amazon.com/${serviceName}/home?region=${testData.region}#${urlPostFix}:`)
   }
 }
 
