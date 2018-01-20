@@ -59,6 +59,9 @@ ec2:
   root: './ec2'
   terraform:
     version: 0.11.0
+    plan: true
+    apply: true
+    destroy: true
     test:
       plan: './tests/unit/'
       apply: './tests/e2e/'
