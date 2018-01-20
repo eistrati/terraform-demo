@@ -59,12 +59,9 @@ ec2:
   root: './ec2'
   terraform:
     version: 0.11.0
-    plan: true
-    apply: true
-    destroy: true
-    test:
-      plan: './tests/unit/'
-      apply: './tests/e2e/'
+    # test:
+    #   plan: './tests/unit/'
+    #   apply: './tests/e2e/'
     vars:
       region: 'us-west-2'
 
@@ -78,8 +75,8 @@ ec2:
 #    vars:
 #      region: 'us-west-2'
 
-#e2e:
-# root: './tests/e2e/'
+e2e:
+ root: './tests/e2e/'
 
-#unit:
-# root: './tests/unit/'
+unit:
+ root: './tests/unit/'

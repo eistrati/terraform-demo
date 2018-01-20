@@ -14,14 +14,13 @@ function on_fail() {
 }
 
 echo "Running 'recink run terraform' ..."
-recink run terraform -v --include-modules="ec2"
-#recink run terraform -vv --include-modules="ec2" --custom-config="ec2.terraform.plan:true,ec2.terraform.apply:false,ec2.terraform.save-show-output:tfshow.txt" || on_fail
-#recink run unit || on_fail
-#recink run terraform --include-modules="ec2" --custom-config="ec2.terraform.plan:true,ec2.terraform.apply:true" || on_fail
+recink run terraform -vv --include-modules="ec2" --custom-config="ec2.terraform.plan:true,ec2.terraform.apply:false,ec2.terraform.save-show-output:tfshow.txt" || on_fail
+recink run unit || on_fail
+recink run terraform --include-modules="ec2" --custom-config="ec2.terraform.plan:true,ec2.terraform.apply:true" || on_fail
 
-#if [ -f "${APP_PATH}/ec2/.resource/terraform.tfstate.remote" ]; then
-#   echo "Running 'recink run e2e' ..."
-#   recink run e2e || on_fail
-#else
-#   echo "Skipping 'recink run e2e' ..."
-#fi
+if [ -f "${APP_PATH}/ec2/.resource/terraform.tfstate.remote" ]; then
+  echo "Running 'recink run e2e' ..."
+  recink run e2e || on_fail
+else
+  echo "Skipping 'recink run e2e' ..."
+fi
