@@ -278,5 +278,3 @@ In the example below two key/value pairs are written into the path secret/db_cre
 > **! IMPORTANT** - Always escape special characters with backspace or the shell will interpret them
 
 > **! REMEMBER** - Vault ran in dev does not store any information to disk.
-
-
