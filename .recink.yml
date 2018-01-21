@@ -49,12 +49,12 @@ ec2_dev:
     #   plan: './tests/unit/'
     #   apply: './tests/e2e/'
 
-# ec2_prod:
-#   root: './ec2'
-#   terraform:
-#     version: 0.11.0
-#     var-files:
-#       - workspace.prod.tfvars
+ec2_prod:
+  root: './ec2'
+  terraform:
+    version: 0.11.0
+    var-files:
+      - workspace.prod.tfvars
 
 e2e:
  root: './tests/e2e/'
