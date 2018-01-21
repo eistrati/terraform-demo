@@ -39,41 +39,22 @@ $:
     browsers:
       - firefox --headless
 
-#vpc1:
-#  root: './vpc1'
-#  terraform:
-#    version: 0.11.0
-#    vars:
-#      region: 'us-west-1'
-#    run-after:
-#      - vpc2
-
-#vpc2:
-#  root: './vpc2'
-#  terraform:
-#    version: 0.11.0
-#    vars:
-#      region: 'us-west-1'
-
-ec2:
+ec2_dev:
   root: './ec2'
   terraform:
     version: 0.11.0
-#    test:
-#      plan: './tests/unit/ec2'
-#      apply: './tests/e2e/ec2/'
-    # vars:
-    #   region: 'us-west-2'
+    var-files:
+      - workspace.dev.tfvars
+    # test:
+    #   plan: './tests/unit/'
+    #   apply: './tests/e2e/'
 
-#rds_restore:
-#  root: './rds_restore'
-#  terraform:
-#    version: 0.11.0
-#    test:
-#      plan: './tests/unit/ec2'
-#      apply: './tests/e2e/ec2/'
-#    vars:
-#      region: 'us-west-2'
+# ec2_prod:
+#   root: './ec2'
+#   terraform:
+#     version: 0.11.0
+#     var-files:
+#       - workspace.prod.tfvars
 
 e2e:
  root: './tests/e2e/'
