@@ -11,6 +11,7 @@ $:
       - /^(.*\/)?node_modules(\/?$)?/i
   terraform:
     resource: '.resource'
+    use-cache: false
     vars:
       access_key: 'process.env.AWS_ACCESS_KEY_ID'
       secret_key: 'process.env.AWS_SECRET_ACCESS_KEY'
