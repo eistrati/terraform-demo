@@ -1,3 +1,5 @@
+# Specify default values for variables defined in variables.tf
+
 region = "us-west-2"
 
 vpc_id = "vpc-a0c91fc5"
