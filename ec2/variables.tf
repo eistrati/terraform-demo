@@ -1,35 +1,39 @@
 variable "region" {
-  default = "us-west-2"
+  type = "string"
 }
 
-variable "access_key" {}
+variable "access_key" {
+  type = "string"
+}
 
-variable "secret_key" {}
+variable "secret_key" {
+  type = "string"
+}
 
 variable "vpc_id" {
-  default = "vpc-a0c91fc5"
+  type = "string"
 }
 
 variable "subnet_id" {
-  default = "subnet-00319365"
+  type = "string"
 }
 
 variable "availability_zone" {
-  default = "us-west-2a"
+  type = "string"
 }
 
 variable "instance_type" {
-  default = "t2.micro"
+  type = "string"
 }
 
 variable "security_groups" {
-  default = [ "sg-25442640" ]
+  type = "list"
 }
 
 variable "ami_id" {
-  default = "ami-32d8124a"
+  type = "string"
 }
 
 variable "key_name" {
-  default = "developer"
+  type = "string"
 }
