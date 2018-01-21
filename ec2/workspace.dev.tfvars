@@ -10,6 +10,6 @@ instance_type = "t2.micro"
 
 security_groups = [ "sg-25442640" ]
 
-ami_id = "ami-32d8124a"
+ami_id = "ami-7f43f307"
 
 key_name = "developer"
