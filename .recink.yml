@@ -38,29 +38,43 @@ $:
     browsers:
       - firefox --headless
 
-ec2:
+# ec2:
+#   root: './ec2'
+#   terraform:
+#     version: 0.11.0
+#     var-files:
+#       - workspace.default.tfvars
+#     test:
+#       plan: './tests/unit/'
+#       apply: './tests/e2e/'
+#     current-workspace: default
+#     available-workspaces:
+#       test:
+#         plan: true
+#         apply: true
+#         destroy: true
+#         var-files:
+#           - workspace.test.tfvars
+#       prod:
+#         plan: true
+#         apply: false
+#         destroy: false
+#         var-files:
+#           - workspace.prod.tfvars
+
+ec2_dev:
   root: './ec2'
   terraform:
     version: 0.11.0
     var-files:
-      - workspace.default.tfvars
-    # test:
-    #   plan: './tests/unit/'
-    #   apply: './tests/e2e/'
-    current-workspace: default
-    available-workspaces:
-      test:
-        plan: true
-        apply: true
-        destroy: true
-        var-files:
-          - workspace.test.tfvars
-      prod:
-        plan: true
-        apply: false
-        destroy: false
-        var-files:
-          - workspace.prod.tfvars
+      - workspace.dev.tfvars
+
+ec2_prod:
+  root: './ec2'
+  terraform:
+    version: 0.11.0
+    var-files:
+      - workspace.prod.tfvars
 
 e2e:
  root: './tests/e2e/'
