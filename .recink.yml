@@ -79,8 +79,8 @@ ec2_prod:
     var-files:
       - workspace.prod.tfvars
 
-# e2e:
-#  root: './tests/e2e/'
+e2e:
+ root: './tests/e2e/'
 
-# unit:
-#  root: './tests/unit/'
+unit:
+ root: './tests/unit/'
