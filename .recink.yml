@@ -68,6 +68,9 @@ ec2_dev:
     version: 0.11.0
     var-files:
       - workspace.dev.tfvars
+    test:
+      plan: './tests/unit/'
+      apply: './tests/e2e/'
 
 ec2_prod:
   root: './ec2'
@@ -76,8 +79,8 @@ ec2_prod:
     var-files:
       - workspace.prod.tfvars
 
-e2e:
- root: './tests/e2e/'
+# e2e:
+#  root: './tests/e2e/'
 
-unit:
- root: './tests/unit/'
+# unit:
+#  root: './tests/unit/'
