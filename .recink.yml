@@ -68,6 +68,7 @@ ec2_dev:
     version: 0.11.0
     var-files:
       - workspace.dev.tfvars
+    save-show-output: tfshow.txt
     test:
       plan: './tests/unit/'
       apply: './tests/e2e/'
