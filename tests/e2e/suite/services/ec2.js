@@ -4,7 +4,7 @@ import { Environment } from '../../config/environment';
 
 const authentication = new Authentication();
 const mapping = require('../../config/mapping.json');
-const searchInput = mapping.aws_instance.test.requiredArguments.searchInput
+const searchInput = mapping.aws_instance.test.requiredArguments.searchInput;
 const idReqArgObj = mapping.aws_instance.test.requiredArguments.id;
 const idReqArgKey = idReqArgObj.key;
 const idReqArgSelector = idReqArgObj.selector;
