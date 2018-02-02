@@ -4,6 +4,9 @@ $:
     '$.terraform.vars.access_key': 'eval'
     '$.terraform.vars.secret_key': 'eval'
     '$.terraform.vars.region': 'eval'
+#    '$.terraform.cache.options.1.secretAccessKey': 'eval'
+#    '$.terraform.cache.options.1.accessKeyId': 'eval'
+#    '$.terraform.cache.options.1.region': 'eval'
   emit:
     pattern:
       - /.+\.js.*$/i
@@ -11,7 +14,13 @@ $:
       - /^(.*\/)?node_modules(\/?$)?/i
   terraform:
     resource: '.resource'
-    use-cache: false
+#    cache:
+#      options:
+#        - 's3://some-bucket/terraform-demo'
+#        -
+#          region: 'process.env.AWS_DEFAULT_REGION'
+#          accessKeyId: 'process.env.AWS_ACCESS_KEY_ID'
+#          secretAccessKey: 'process.env.AWS_SECRET_ACCESS_KEY'
     vars:
       access_key: 'process.env.AWS_ACCESS_KEY_ID'
       secret_key: 'process.env.AWS_SECRET_ACCESS_KEY'
@@ -84,8 +93,10 @@ ec2_prod:
       plan: './tests/unit/'
       apply: './tests/e2e/'
 
-e2e:
- root: './tests/e2e/'
-
-unit:
- root: './tests/unit/'
+#iam:
+#  root: './iam'
+#  terraform:
+#    cache: true
+#    plan: false
+#    apply: true
+#    destroy: true
