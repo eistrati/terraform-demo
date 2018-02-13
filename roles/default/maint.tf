@@ -1,12 +1,17 @@
 // Create roles to be assumed via OneLogin
-resource "aws_iam_role" "acme_operations_administrator" {
-  name = "default"
-  assume_role_policy = "${data.aws_iam_policy_document.acme_operations_onelogin_crossaccount_assume.json}"
-  provider = "aws.acme_operations"
+module "test_policy" {
+	source                   = "../../policies/test-policy/"
+	name                     = "${var.policy_name}"
+	shared_services_role_arn = "${var.shared_services_role_arn}"
 }
 
-resource "aws_iam_role_policy_attachment" "acme_operations_administrator" {
-  role = "${aws_iam_role.acme_operations_administrator.name}"
-  policy_arn = "${var.administrator_default_arn}"
-  provider = "aws.acme_operations"
+resource "aws_iam_role" "test_role" {
+  name               = "${var.role_name}"
+  path               = "/"
+  assume_role_policy = "${data.aws_iam_policy_document.default-assume-role-policy.json}"
+}
+
+resource "aws_iam_role_policy_attachment" "test-attach" {
+    role       = "${aws_iam_role.test_role.name}"
+    policy_arn = "${module.test_policy.default_policy_arn}"
 }
