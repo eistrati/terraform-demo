@@ -100,3 +100,17 @@ ec2_prod:
 #    plan: false
 #    apply: true
 #    destroy: true
+
+clarivate_admin_role:
+  root: './roles/clarivate-admin-role'
+  terraform:
+    version: 0.11.0
+    var-files:
+      - workspace.dev.tfvars
+
+clarivate_power_user_role:
+  root: './roles/clarivate-power-user-role'
+  terraform:
+    version: 0.11.0
+    var-files:
+      - workspace.dev.tfvars
