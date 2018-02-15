@@ -1,5 +1,10 @@
 module "create_role_account_00" {
 	source = "./role"
+
+	providers = {
+		"aws" = "aws.account_00"
+	}
+	
 	
 	policy_name              = "${var.policy_name}"
     shared_services_role_arn = "arn:aws:iam::${var.aws_account_id_00}:role/ClarivateCrossAccountRole"
