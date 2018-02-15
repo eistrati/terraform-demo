@@ -1,6 +1,0 @@
-aws_account_id = "600605919324"
-aws_profile = "saml"
-region = "us-west-2"
-policy_name = "clarivate-power-user-policy"
-shared_services_role_arn = "arn:aws:iam::600605919324:role/ADdevelopers"
-role_name = "clarivate-power-user-role"

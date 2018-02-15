@@ -102,15 +102,15 @@ ec2_prod:
 #    destroy: true
 
 clarivate_admin_role:
-  root: './roles/clarivate-admin-role'
+  root: './iam_demo'
   terraform:
     version: 0.11.0
     var-files:
-      - workspace.dev.tfvars
+      - workspace.admin.tfvars
 
 clarivate_power_user_role:
-  root: './roles/clarivate-power-user-role'
+  root: './iam_demo'
   terraform:
     version: 0.11.0
     var-files:
-      - workspace.dev.tfvars
+      - workspace.power_user.tfvars
