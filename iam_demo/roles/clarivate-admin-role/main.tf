@@ -1,9 +1,5 @@
 module "create_role_account_00" {
 	source = "./role"
-
-	providers = {
-		"aws" = "aws.account_00"
-	}
 	
 	
 	policy_name              = "${var.policy_name}"

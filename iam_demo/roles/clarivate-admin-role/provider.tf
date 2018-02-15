@@ -1,8 +1,6 @@
 provider "aws" {
-  region = "us-west-2"
-  alias  = "account_00"
-  access_key = "${var.aws_access_key}"
-  secret_key = "${var.aws_secret_key}"
+  region = "${var.region}"
+  allowed_account_ids = ["${var.aws_account_id_00}"]
 }
 
 provider "aws" {
