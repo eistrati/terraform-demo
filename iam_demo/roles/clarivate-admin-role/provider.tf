@@ -1,18 +1,21 @@
 provider "aws" {
   region = "${var.region}"
-  allowed_account_ids = ["${var.aws_account_id_00}"]
+  access_key = "${var.aws_access_key_00}"
+  secret_key = "${var.aws_secret_key_00}"
 }
 
 provider "aws" {
   region = "${var.region}"
   alias  = "account_01"
 
-  allowed_account_ids = ["${var.aws_account_id_01}"]
+  access_key = "${var.aws_access_key_01}"
+  secret_key = "${var.aws_secret_key_01}"
 }
 
 provider "aws" {
   region = "${var.region}"
   alias  = "account_02"
 
-  allowed_account_ids = ["${var.aws_account_id_02}"]
+  access_key = "${var.aws_access_key_02}"
+  secret_key = "${var.aws_secret_key_02}"
 }
