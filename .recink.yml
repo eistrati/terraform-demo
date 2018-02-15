@@ -1,105 +1,24 @@
---- 
+---
 $:
   preprocess:
     '$.terraform.vars.access_key': 'eval'
     '$.terraform.vars.secret_key': 'eval'
     '$.terraform.vars.region': 'eval'
-#    '$.terraform.cache.options.1.secretAccessKey': 'eval'
-#    '$.terraform.cache.options.1.accessKeyId': 'eval'
-#    '$.terraform.cache.options.1.region': 'eval'
   emit:
     pattern:
-      - /.+\.js.*$/i
+      - /.+\.js$/i
     ignore:
       - /^(.*\/)?node_modules(\/?$)?/i
   terraform:
     resource: '.resource'
-#    cache:
-#      options:
-#        - 's3://some-bucket/terraform-demo'
-#        -
-#          region: 'process.env.AWS_DEFAULT_REGION'
-#          accessKeyId: 'process.env.AWS_ACCESS_KEY_ID'
-#          secretAccessKey: 'process.env.AWS_SECRET_ACCESS_KEY'
+    cache: false
+    plan: true
+    apply: false
+    destroy: false
     vars:
       access_key: 'process.env.AWS_ACCESS_KEY_ID'
       secret_key: 'process.env.AWS_SECRET_ACCESS_KEY'
       region: 'process.env.AWS_DEFAULT_REGION'
-  npm:
-    scripts: []
-    dependencies:
-      chai: 'latest'
-  test:
-    mocha:
-      options:
-        ui: 'bdd'
-        reporter: 'spec'
-    pattern:
-      - /.+\.spec\.js$/i
-    ignore: ~
-  e2e:
-    pattern:
-      - /.+\.e2e\.js$/i
-    screenshot:
-      enabled: true
-      take-on-fail: true
-      path: './tests/e2e/screenshots'
-    browsers:
-      - firefox --headless
-
-# ec2:
-#   root: './ec2'
-#   terraform:
-#     version: 0.11.0
-#     var-files:
-#       - workspace.default.tfvars
-#     test:
-#       plan: './tests/unit/'
-#       apply: './tests/e2e/'
-#     current-workspace: default
-#     available-workspaces:
-#       test:
-#         plan: true
-#         apply: true
-#         destroy: true
-#         var-files:
-#           - workspace.test.tfvars
-#       prod:
-#         plan: true
-#         apply: false
-#         destroy: false
-#         var-files:
-#           - workspace.prod.tfvars
-
-ec2_dev:
-  root: './ec2'
-  terraform:
-    version: 0.11.0
-    var-files:
-      - workspace.dev.tfvars
-    save-show-output: tfshow.txt
-    test:
-      plan: './tests/unit/'
-      apply: './tests/e2e/'
-
-ec2_prod:
-  root: './ec2'
-  terraform:
-    version: 0.11.0
-    var-files:
-      - workspace.prod.tfvars
-    save-show-output: tfshow.txt
-    test:
-      plan: './tests/unit/'
-      apply: './tests/e2e/'
-
-#iam:
-#  root: './iam'
-#  terraform:
-#    cache: true
-#    plan: false
-#    apply: true
-#    destroy: true
 
 clarivate_admin_role:
   root: './iam_demo'
