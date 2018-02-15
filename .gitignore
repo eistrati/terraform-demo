@@ -44,7 +44,7 @@ typings/
 .env
 
 bin/terraform
-.terraform/
+**.terraform/
 .resource/
 terraform.tfplan
 tests/e2e/screenshot*
