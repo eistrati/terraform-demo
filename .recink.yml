@@ -12,10 +12,27 @@ $:
   terraform:
     resource: '.resource'
     use-cache: false
+    save-show-output: tfshow.txt
     vars:
       access_key: 'process.env.AWS_ACCESS_KEY_ID'
       secret_key: 'process.env.AWS_SECRET_ACCESS_KEY'
       region: 'process.env.AWS_DEFAULT_REGION'
+    test:
+      plan: './tests/unit/'
+      apply: './tests/e2e/'
+      unit:
+        mocha:
+          options:
+            ui: 'bdd'
+            reporter: 'spec'
+      e2e:
+        testcafe:
+          screenshot:
+            enabled: true
+            take-on-fail: true
+            path: './tests/e2e/screenshots'
+          browsers:
+            - firefox --headless
   npm:
     scripts: []
     dependencies:
@@ -29,14 +46,16 @@ $:
       - /.+\.spec\.js$/i
     ignore: ~
   e2e:
+    testcafe:
+      screenshot:
+        enabled: true
+        take-on-fail: true
+        path: './tests/e2e/screenshots'
+      browsers:
+        - firefox --headless
     pattern:
       - /.+\.e2e\.js$/i
-    screenshot:
-      enabled: true
-      take-on-fail: true
-      path: './tests/e2e/screenshots'
-    browsers:
-      - firefox --headless
+    ignore: ~
 
 # ec2:
 #   root: './ec2'
@@ -68,10 +87,6 @@ ec2_dev:
     version: 0.11.0
     var-files:
       - workspace.dev.tfvars
-    save-show-output: tfshow.txt
-    test:
-      plan: './tests/unit/'
-      apply: './tests/e2e/'
 
 ec2_prod:
   root: './ec2'
@@ -79,10 +94,6 @@ ec2_prod:
     version: 0.11.0
     var-files:
       - workspace.prod.tfvars
-    save-show-output: tfshow.txt
-    test:
-      plan: './tests/unit/'
-      apply: './tests/e2e/'
 
 e2e:
  root: './tests/e2e/'
