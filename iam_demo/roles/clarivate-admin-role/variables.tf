@@ -1,6 +1,6 @@
-variable "aws_account_id" {}
-variable "aws_account_id_ad_tech_media" {}
-variable "aws_account_id_mitoc_group" {}
+variable "aws_account_id_00" {}
+variable "aws_account_id_01" {}
+variable "aws_account_id_02" {}
 
 variable "region" {}
 variable "policy_name" {}

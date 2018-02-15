@@ -1,31 +1,31 @@
-module "create_role_cloud_native_ci" {
+module "create_role_account_00" {
 	source = "./role"
 	
 	policy_name              = "${var.policy_name}"
-    shared_services_role_arn = "arn:aws:iam::${var.aws_account_id}:role/ClarivateCrossAccountRole"
+    shared_services_role_arn = "arn:aws:iam::${var.aws_account_id_00}:role/ClarivateCrossAccountRole"
     role_name                = "${var.role_name}"
 }
 
-module "create_role_ad_tech_media" {
+module "create_role_account_01" {
 	source = "./role"
 
 	providers = {
-		"aws" = "aws.ad_tech_media"
+		"aws" = "aws.account_01"
 	}
 	
 	policy_name              = "${var.policy_name}"
-    shared_services_role_arn = "arn:aws:iam::${var.aws_account_id_ad_tech_media}:role/ClarivateCrossAccountRole"
+    shared_services_role_arn = "arn:aws:iam::${var.aws_account_id_01}:role/ClarivateCrossAccountRole"
     role_name                = "${var.role_name}"
 }
 
-module "create_role_mitoc_group" {
+module "create_role_account_02" {
 	source = "./role"
 
 	providers = {
-		"aws" = "aws.mitoc_group"
+		"aws" = "aws.account_02"
 	}
 	 
 	policy_name              = "${var.policy_name}"
-    shared_services_role_arn = "arn:aws:iam::${var.aws_account_id_mitoc_group}:role/ClarivateCrossAccountRole"
+    shared_services_role_arn = "arn:aws:iam::${var.aws_account_id_02}:role/ClarivateCrossAccountRole"
     role_name                = "${var.role_name}"
 }

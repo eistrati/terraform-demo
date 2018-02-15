@@ -1,24 +1,22 @@
 provider "aws" {
   region = "${var.region}"
-  allowed_account_ids = ["${var.aws_account_id}"]
+  allowed_account_ids = ["${var.aws_account_id_00}"]
 }
 
 provider "aws" {
   region = "${var.region}"
-  alias  = "ad_tech_media"
-  allowed_account_ids = ["${var.aws_account_id}"]
+  alias  = "account_01"
 
   assume_role {
-    role_arn = "arn:aws:iam::${var.aws_account_id_ad_tech_media}:role/ClarivateCrossAccountRole"
+    role_arn = "arn:aws:iam::${var.aws_account_id_01}:role/ClarivateCrossAccountRole"
   }
 }
 
 provider "aws" {
   region = "${var.region}"
-  alias  = "mitoc_group"
-  allowed_account_ids = ["${var.aws_account_id}"]
+  alias  = "account_02"
 
   assume_role {
-    role_arn = "arn:aws:iam::${var.aws_account_id_mitoc_group}:role/ClarivateCrossAccountRole"
+    role_arn = "arn:aws:iam::${var.aws_account_id_02}:role/ClarivateCrossAccountRole"
   }
 }
