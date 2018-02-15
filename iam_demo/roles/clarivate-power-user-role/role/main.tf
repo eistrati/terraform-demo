@@ -1,6 +1,6 @@
 // Create roles to be assumed via OneLogin
 module "aws_policy" {
-	source                   = "../../policies/clarivate-admin-policy/"
+	source                   = "../../../policies/clarivate-power-user-policy/"
 	name                     = "${var.policy_name}"
 	shared_services_role_arn = "${var.shared_services_role_arn}"
 }
