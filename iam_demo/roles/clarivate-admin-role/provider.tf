@@ -1,7 +1,6 @@
 provider "aws" {
   region = "${var.region}"
-  access_key = "${var.aws_access_key_00}"
-  secret_key = "${var.aws_secret_key_00}"
+  allowed_account_ids = ["${var.aws_account_id_00}"]
 }
 
 provider "aws" {
