@@ -3,10 +3,10 @@ module "aws_policy" {
 	source                   = "../../../policies/clarivate-admin-policy/"
 	name                     = "${var.policy_name}"
 	shared_services_role_arn = "${var.shared_services_role_arn}"
-   provider = "${var.provider}"
+   aws_provider = "${var.aws_provider}"
 
    providers = {
-      "aws" = "${var.provider}"
+      "aws" = "${var.aws_provider}"
     }
 }
 

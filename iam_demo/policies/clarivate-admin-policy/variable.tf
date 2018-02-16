@@ -1,4 +1,4 @@
-variable "provider" {
+variable "aws_provider" {
 	description = "The provider."
 }
 
