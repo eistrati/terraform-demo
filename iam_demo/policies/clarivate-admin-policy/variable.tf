@@ -1,7 +1,3 @@
-variable "aws_provider" {
-	description = "The provider."
-}
-
 variable "name" {
 	description = "The policy name."
 }

@@ -1,32 +1,26 @@
 provider "aws" {
-  alias  = "account_00"
-  profile  = "account_00"
   region = "us-east-1"
-
-  assume_role {
-    role_arn = "arn:aws:iam::600605919324:role/ClarivateCrossAccountRole"
-    session_name = "600605919324"
-  }
+  allowed_account_ids = ["${var.aws_account_id_00}"]
 }
 
 provider "aws" {
   alias  = "account_01"
-  profile = "account_01"
+  profile  = "account_01"
   region = "us-east-1"
 
   assume_role {
-    role_arn = "arn:aws:iam::490643292278:role/ClarivateCrossAccountRole"
-    session_name = "490643292278"
+    role_arn = "arn:aws:iam::${var.aws_account_id_01}:role/ClarivateCrossAccountRole"
+    session_name = "${var.aws_account_id_01}"
   }
 }
 
 provider "aws" {
   alias  = "account_02"
-  profile = "account_02"
+  profile  = "account_02"
   region = "us-east-1"
 
   assume_role {
-    role_arn = "arn:aws:iam::492198229272:role/ClarivateCrossAccountRole"
-    session_name = "492198229272"
+    role_arn = "arn:aws:iam::${var.aws_account_id_02}:role/ClarivateCrossAccountRole"
+    session_name = "${var.aws_account_id_02}"
   }
 }

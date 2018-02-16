@@ -1,12 +1,6 @@
 provider "aws" {
-  alias  = "account_00"
-  profile  = "account_00"
   region = "us-east-1"
-
-  assume_role {
-    role_arn = "arn:aws:iam::${var.aws_account_id_00}:role/ClarivateCrossAccountRole"
-    session_name = "${var.aws_account_id_00}"
-  }
+  allowed_account_ids = ["${var.aws_account_id_00}"]
 }
 
 provider "aws" {
