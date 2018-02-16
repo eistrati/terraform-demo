@@ -1,3 +1,3 @@
-variable "policy_name" {}
-variable "shared_services_role_arn" {}
+variable "provider" {}
 variable "role_name" {}
+variable "policy_name" {}

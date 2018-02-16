@@ -1,7 +1,7 @@
-variable "name" {
-	description = "The policy name."
+variable "provider" {
+  description = "The policy name."
 }
 
-variable "shared_services_role_arn" {
-	description = "The shared services role arn."
+variable "name" {
+  description = "The policy name."
 }

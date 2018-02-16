@@ -1,6 +1,7 @@
 provider "aws" {
+  alias  = "account_00"
   region = "us-east-1"
-  allowed_account_ids = ["${var.aws_account_id_00}"]
+  // allowed_account_ids = ["${var.aws_account_id_00}"]
 }
 
 provider "aws" {
