@@ -9,7 +9,5 @@ resource "aws_iam_policy" "aws_policy" {
   path   = "/"
   policy = "${module.statements.policy_json}"
 
-  providers = {
-  		"aws" = "${var.provider}"
-  }
+  provider = "${var.provider}"
 }

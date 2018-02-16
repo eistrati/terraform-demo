@@ -12,9 +12,7 @@ resource "aws_iam_role" "aws_role" {
   path               = "/"
   assume_role_policy = "${data.aws_iam_policy_document.default-assume-role-policy.json}"
 
-  providers = {
-		"aws" = "${var.provider}"
-	}
+  provider = "${var.provider}"
 }
 
 resource "aws_iam_role_policy_attachment" "test-attach" {
@@ -22,7 +20,5 @@ resource "aws_iam_role_policy_attachment" "test-attach" {
     policy_arn = "${module.aws_policy.aws_policy_arn}"
 
 
-  providers = {
-		"aws" = "${var.provider}"
-	}
+  provider = "${var.provider}"
 }
