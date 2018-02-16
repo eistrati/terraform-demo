@@ -1,10 +1,5 @@
 module "statements" {
   source    = "./statements"
-  providers = {
-    "aws" = "aws.account_00",
-    "aws" = "aws.account_01",
-    "aws" = "aws.account_02"
-  }
 }
 
 resource "aws_iam_policy" "aws_policy_account_00" {
