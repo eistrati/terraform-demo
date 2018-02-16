@@ -1,6 +1,6 @@
 module "statements" {
 	source = "./statements"
-	shared_services_role_arn = "${var.shared_services_role_arn}"
+	//shared_services_role_arn = "${var.shared_services_role_arn}"
 	providers = {
       "aws" = "${var.aws_provider}"
     }
