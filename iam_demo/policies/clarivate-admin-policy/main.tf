@@ -1,6 +1,9 @@
 module "statements" {
 	source = "./statements"
 	shared_services_role_arn = "${var.shared_services_role_arn}"
+	providers = {
+      "aws" = "${var.provider}"
+    }
 }
 
 
@@ -9,5 +12,5 @@ resource "aws_iam_policy" "aws_policy" {
   path   = "/"
   policy = "${module.statements.policy_json}"
 
-  provider = "${var.provider}"
+  //provider = "${var.provider}"
 }
