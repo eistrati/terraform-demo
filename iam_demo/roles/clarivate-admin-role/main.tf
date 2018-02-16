@@ -4,9 +4,8 @@ module "create_role_account_00" {
     "aws" = "aws.account_00"
   }
 
-  provider                 = "account_00"
-  role_name                = "${var.role_name}"
-  policy_name              = "${var.policy_name}"
+  provider  = "account_00"
+  role_name = "${var.role_name}"
 }
 
 module "create_role_account_01" {
@@ -15,9 +14,8 @@ module "create_role_account_01" {
     "aws" = "aws.account_01"
   }
 
-  provider                 = "account_01"
-  role_name                = "${var.role_name}"
-  policy_name              = "${var.policy_name}"
+  provider  = "account_01"
+  role_name = "${var.role_name}"
 }
 
 module "create_role_account_02" {
@@ -26,7 +24,6 @@ module "create_role_account_02" {
     "aws" = "aws.account_02"
   }
 
-  provider                 = "account_02"
-  role_name                = "${var.role_name}"
-  policy_name              = "${var.policy_name}"
+  provider  = "account_02"
+  role_name = "${var.role_name}"
 }
