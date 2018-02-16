@@ -1,29 +1,40 @@
-module "create_role_account_00" {
-  source    = "./role"
-  providers = {
-    "aws" = "aws.account_00"
-  }
-
-  provider  = "account_00"
-  role_name = "${var.role_name}"
+module "aws_policy" {
+  source             = "../../../policies/clarivate-admin-policy/"
+  policy_name        = "${var.policy_name}"
 }
 
-module "create_role_account_01" {
-  source    = "./role"
-  providers = {
-    "aws" = "aws.account_01"
-  }
-
-  provider  = "account_01"
-  role_name = "${var.role_name}"
+resource "aws_iam_role" "aws_role_account_00" {
+  name               = "${var.role_name}"
+  path               = "/"
+  assume_role_policy = "${data.aws_iam_policy_document.default_assume_role_policy.json}"
+  provider           = "aws.account_00"
 }
 
-module "create_role_account_02" {
-  source    = "./role"
-  providers = {
-    "aws" = "aws.account_02"
-  }
+resource "aws_iam_role_policy_attachment" "role_attach_account_00" {
+  role               = "${aws_iam_role.aws_role_account_00.name}"
+  policy_arn         = "${module.aws_policy.aws_policy_arn_account_00}"
+}
 
-  provider  = "account_02"
-  role_name = "${var.role_name}"
+resource "aws_iam_role" "aws_role_account_01" {
+  name               = "${var.role_name}"
+  path               = "/"
+  assume_role_policy = "${data.aws_iam_policy_document.default_assume_role_policy.json}"
+  provider           = "aws.account_01"
+}
+
+resource "aws_iam_role_policy_attachment" "role_attach_account_01" {
+  role               = "${aws_iam_role.aws_role_account_01.name}"
+  policy_arn         = "${module.aws_policy.aws_policy_arn_account_01}"
+}
+
+resource "aws_iam_role" "aws_role_account_02" {
+  name               = "${var.role_name}"
+  path               = "/"
+  assume_role_policy = "${data.aws_iam_policy_document.default_assume_role_policy.json}"
+  provider           = "aws.account_02"
+}
+
+resource "aws_iam_role_policy_attachment" "role_attach_account_02" {
+  role               = "${aws_iam_role.aws_role_account_02.name}"
+  policy_arn         = "${module.aws_policy.aws_policy_arn_account_02}"
 }
