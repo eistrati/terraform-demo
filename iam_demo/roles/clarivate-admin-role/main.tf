@@ -1,5 +1,8 @@
 module "aws_policy" {
   source             = "../../policies/clarivate-admin-policy/"
+  aws_account_id_00  = "${var.aws_account_id_00}"
+  aws_account_id_01  = "${var.aws_account_id_01}"
+  aws_account_id_02  = "${var.aws_account_id_02}"
   policy_name        = "${var.policy_name}"
 }
 
