@@ -5,9 +5,9 @@ module "aws_policy" {
 	shared_services_role_arn = "${var.shared_services_role_arn}"
    //aws_provider = "${var.aws_provider}"
 
-   /*providers = {
+    providers = {
       "aws" = "${var.aws_provider}"
-    }*/
+    }
 }
 
 resource "aws_iam_role" "aws_role" {

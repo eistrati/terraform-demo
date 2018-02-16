@@ -1,7 +1,7 @@
 module "create_role_account_00" {
 	source = "./role"
 	
-	//aws_provider = "aws.account_00"
+	aws_provider = "aws.account_00"
 	providers = {
   		"aws" = "aws.account_00"
     }
@@ -13,7 +13,7 @@ module "create_role_account_00" {
 module "create_role_account_01" {
 	source = "./role"
 
-	//aws_provider = "aws.account_01"
+	aws_provider = "aws.account_01"
 	providers = {
   		"aws" = "aws.account_01"
     }
@@ -26,7 +26,7 @@ module "create_role_account_01" {
 module "create_role_account_02" {
 	source = "./role"
 
-	//aws_provider = "aws.account_02"
+	aws_provider = "aws.account_02"
 	providers = {
   		"aws" = "aws.account_02"
     }
