@@ -1,5 +1,5 @@
 module "aws_policy" {
-  source             = "../../../policies/clarivate-admin-policy/"
+  source             = "../../policies/clarivate-admin-policy/"
   policy_name        = "${var.policy_name}"
 }
 
