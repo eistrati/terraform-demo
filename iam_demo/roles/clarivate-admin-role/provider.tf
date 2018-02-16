@@ -4,8 +4,8 @@ provider "aws" {
   region = "us-east-1"
 
   assume_role {
-    role_arn = "arn:aws:iam::${var.aws_account_id_00}:role/ClarivateCrossAccountRole"
-    session_name = "${var.aws_account_id_00}"
+    role_arn = "arn:aws:iam::600605919324:role/ClarivateCrossAccountRole"
+    session_name = "600605919324"
   }
 }
 
@@ -15,8 +15,8 @@ provider "aws" {
   region = "us-east-1"
 
   assume_role {
-    role_arn = "arn:aws:iam::${var.aws_account_id_01}:role/ClarivateCrossAccountRole"
-    session_name = "${var.aws_account_id_01}"
+    role_arn = "arn:aws:iam::490643292278:role/ClarivateCrossAccountRole"
+    session_name = "490643292278"
   }
 }
 
@@ -26,7 +26,7 @@ provider "aws" {
   region = "us-east-1"
 
   assume_role {
-    role_arn = "arn:aws:iam::${var.aws_account_id_02}:role/ClarivateCrossAccountRole"
-    session_name = "${var.aws_account_id_02}"
+    role_arn = "arn:aws:iam::492198229272:role/ClarivateCrossAccountRole"
+    session_name = "492198229272"
   }
 }
