@@ -1,6 +1,10 @@
 [default]
 region = us-west-2
 
+[profile account_00]
+role_arn = arn:aws:iam::600605919324:role/ClarivateCrossAccountRole
+source_profile = default
+
 [profile account_01]
 role_arn = arn:aws:iam::490643292278:role/ClarivateCrossAccountRole
 source_profile = default
