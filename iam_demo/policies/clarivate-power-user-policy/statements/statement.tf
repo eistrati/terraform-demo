@@ -3,6 +3,6 @@ data "aws_iam_policy_document" "statement" {
 
   statement {
 	    actions   = ["ec2:*"]
-	    resources = ["${var.shared_services_role_arn}"]
+	    resources = ["*"]
   }
 }
