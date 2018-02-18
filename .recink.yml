@@ -24,6 +24,8 @@ clarivate_admin_role:
   root: './iam_demo/roles/clarivate-admin-role'
   terraform:
     version: 0.11.0
+    run-after:
+      - clarivate_admin_policy
     var-files:
       - workspace.default.tfvars
 
@@ -31,11 +33,20 @@ clarivate_power_user_role:
   root: './iam_demo/roles/clarivate-power-user-role'
   terraform:
     version: 0.11.0
+    run-after:
+      - clarivate_power_user_policy
     var-files:
       - workspace.default.tfvars
 
 clarivate_admin_policy:
   root: './iam_demo/policies/clarivate-admin-policy'
+  terraform:
+    version: 0.11.0
+    var-files:
+      - workspace.default.tfvars
+
+clarivate_power_user_policy:
+  root: './iam_demo/policies/clarivate-power-user-policy'
   terraform:
     version: 0.11.0
     var-files:
