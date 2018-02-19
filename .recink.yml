@@ -60,33 +60,47 @@ $:
       - /.+\.e2e\.js$/i
     ignore: ~
 
-clarivate_admin_role:
-  root: './iam_demo/roles/clarivate-admin-role'
+ec2_dev:
+  root: './ec2'
+  terraform:
+    version: 0.11.0
+    var-files:
+      - workspace.dev.tfvars
+
+ec2_prod:
+  root: './ec2'
+  terraform:
+    version: 0.11.0
+    var-files:
+      - workspace.prod.tfvars
+
+iam_admin_role:
+  root: './iam/roles/admin-role'
   terraform:
     version: 0.11.0
     run-after:
-      - clarivate_admin_policy
+      - iam_admin_policy
     var-files:
       - workspace.default.tfvars
 
-clarivate_power_user_role:
-  root: './iam_demo/roles/clarivate-power-user-role'
+iam_power_user_role:
+  root: './iam/roles/power-user-role'
   terraform:
     version: 0.11.0
     run-after:
-      - clarivate_power_user_policy
+      - iam_power_user_policy
     var-files:
       - workspace.default.tfvars
 
-clarivate_admin_policy:
-  root: './iam_demo/policies/clarivate-admin-policy'
+iam_admin_policy:
+  root: './iam/policies/admin-policy'
   terraform:
     version: 0.11.0
     var-files:
       - workspace.default.tfvars
 
-clarivate_power_user_policy:
-  root: './iam_demo/policies/clarivate-power-user-policy'
+iam_power_user_policy:
+  root: './iam/policies/power-user-policy'
   terraform:
     version: 0.11.0
     var-files:

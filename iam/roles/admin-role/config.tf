@@ -3,7 +3,7 @@ terraform {
 
   backend "s3" {
     bucket = "cloudnativeci-metadata"
-    key    = "cache/MitocGroup/terraform-demo/iam_demo/polices/clarivate-admin-policy/terraform.tfstate"
+    key    = "cache/MitocGroup/terraform-demo/iam/roles/admin-role/terraform.tfstate"
     region = "us-east-1"
   }
 }
