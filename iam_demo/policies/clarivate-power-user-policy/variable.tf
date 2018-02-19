@@ -1,7 +1,7 @@
-variable "name" {
-	description = "The policy name."
-}
+variable "aws_account_id_00" {}
+variable "aws_account_id_01" {}
+variable "aws_account_id_02" {}
 
-variable "shared_services_role_arn" {
-	description = "The shared services role arn."
+variable "policy_name" {
+  description = "The policy name."
 }

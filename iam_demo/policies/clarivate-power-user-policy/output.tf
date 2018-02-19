@@ -1,11 +1,11 @@
-output "aws_policy_id" {
-  value = "${aws_iam_policy.aws_policy.id}"
+output "aws_policy_arn_account_00" {
+  value = "${aws_iam_policy.aws_policy_account_00.arn}"
 }
 
-output "aws_policy_name" {
-  value = "${aws_iam_policy.aws_policy.name}"
+output "aws_policy_arn_account_01" {
+  value = "${aws_iam_policy.aws_policy_account_01.arn}"
 }
 
-output "aws_policy_arn" {
-  value = "${aws_iam_policy.aws_policy.arn}"
+output "aws_policy_arn_account_02" {
+  value = "${aws_iam_policy.aws_policy_account_02.arn}"
 }
