@@ -15,10 +15,50 @@ $:
     plan: true
     apply: false
     destroy: false
+    save-show-output: tfshow.txt
     vars:
       access_key: 'process.env.AWS_ACCESS_KEY_ID'
       secret_key: 'process.env.AWS_SECRET_ACCESS_KEY'
       region: 'process.env.AWS_DEFAULT_REGION'
+    test:
+      plan: './tests/unit/'
+      apply: './tests/e2e/'
+      unit:
+        mocha:
+          options:
+            ui: 'bdd'
+            reporter: 'spec'
+      e2e:
+        testcafe:
+          screenshot:
+            enabled: true
+            take-on-fail: true
+            path: './tests/e2e/screenshots'
+          browsers:
+            - firefox --headless
+  npm:
+    scripts: []
+    dependencies:
+      chai: 'latest'
+  test:
+    mocha:
+      options:
+        ui: 'bdd'
+        reporter: 'spec'
+    pattern:
+      - /.+\.spec\.js$/i
+    ignore: ~
+  e2e:
+    testcafe:
+      screenshot:
+        enabled: true
+        take-on-fail: true
+        path: './tests/e2e/screenshots'
+      browsers:
+        - firefox --headless
+    pattern:
+      - /.+\.e2e\.js$/i
+    ignore: ~
 
 clarivate_admin_role:
   root: './iam_demo/roles/clarivate-admin-role'
