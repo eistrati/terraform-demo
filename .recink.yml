@@ -1,20 +1,20 @@
---- 
+---
 $:
   preprocess:
     '$.terraform.vars.access_key': 'eval'
     '$.terraform.vars.secret_key': 'eval'
     '$.terraform.vars.region': 'eval'
-#    '$.terraform.cache.options.1.secretAccessKey': 'eval'
-#    '$.terraform.cache.options.1.accessKeyId': 'eval'
-#    '$.terraform.cache.options.1.region': 'eval'
   emit:
     pattern:
-      - /.+\.js.*$/i
+      - /.+\.js$/i
     ignore:
       - /^(.*\/)?node_modules(\/?$)?/i
   terraform:
     resource: '.resource'
-    use-cache: false
+    cache: false
+    plan: true
+    apply: false
+    destroy: false
     save-show-output: tfshow.txt
     vars:
       access_key: 'process.env.AWS_ACCESS_KEY_ID'
@@ -60,48 +60,34 @@ $:
       - /.+\.e2e\.js$/i
     ignore: ~
 
-# ec2:
-#   root: './ec2'
-#   terraform:
-#     version: 0.11.0
-#     var-files:
-#       - workspace.default.tfvars
-#     test:
-#       plan: './tests/unit/'
-#       apply: './tests/e2e/'
-#     current-workspace: default
-#     available-workspaces:
-#       test:
-#         plan: true
-#         apply: true
-#         destroy: true
-#         var-files:
-#           - workspace.test.tfvars
-#       prod:
-#         plan: true
-#         apply: false
-#         destroy: false
-#         var-files:
-#           - workspace.prod.tfvars
+clarivate_admin_role:
+  root: './iam_demo/roles/clarivate-admin-role'
+  terraform:
+    version: 0.11.0
+    run-after:
+      - clarivate_admin_policy
+    var-files:
+      - workspace.default.tfvars
 
-ec2_dev:
-  root: './ec2'
+clarivate_power_user_role:
+  root: './iam_demo/roles/clarivate-power-user-role'
+  terraform:
+    version: 0.11.0
+    run-after:
+      - clarivate_power_user_policy
+    var-files:
+      - workspace.default.tfvars
+
+clarivate_admin_policy:
+  root: './iam_demo/policies/clarivate-admin-policy'
   terraform:
     version: 0.11.0
     var-files:
-      - workspace.dev.tfvars
+      - workspace.default.tfvars
 
-ec2_prod:
-  root: './ec2'
+clarivate_power_user_policy:
+  root: './iam_demo/policies/clarivate-power-user-policy'
   terraform:
     version: 0.11.0
     var-files:
-      - workspace.prod.tfvars
-
-#iam:
-#  root: './iam'
-#  terraform:
-#    cache: true
-#    plan: false
-#    apply: true
-#    destroy: true
+      - workspace.default.tfvars
