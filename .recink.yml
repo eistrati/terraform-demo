@@ -1,4 +1,4 @@
---- 
+---
 $:
   preprocess:
     '$.terraform.vars.access_key': 'eval'
@@ -6,16 +6,36 @@ $:
     '$.terraform.vars.region': 'eval'
   emit:
     pattern:
-      - /.+\.js.*$/i
+      - /.+\.js$/i
     ignore:
       - /^(.*\/)?node_modules(\/?$)?/i
   terraform:
     resource: '.resource'
-    use-cache: false
+    cache: false
+    plan: true
+    apply: false
+    destroy: false
+    save-show-output: tfshow.txt
     vars:
       access_key: 'process.env.AWS_ACCESS_KEY_ID'
       secret_key: 'process.env.AWS_SECRET_ACCESS_KEY'
       region: 'process.env.AWS_DEFAULT_REGION'
+    test:
+      plan: './tests/unit/'
+      apply: './tests/e2e/'
+      unit:
+        mocha:
+          options:
+            ui: 'bdd'
+            reporter: 'spec'
+      e2e:
+        testcafe:
+          screenshot:
+            enabled: true
+            take-on-fail: true
+            path: './tests/e2e/screenshots'
+          browsers:
+            - firefox --headless
   npm:
     scripts: []
     dependencies:
@@ -29,14 +49,16 @@ $:
       - /.+\.spec\.js$/i
     ignore: ~
   e2e:
+    testcafe:
+      screenshot:
+        enabled: true
+        take-on-fail: true
+        path: './tests/e2e/screenshots'
+      browsers:
+        - firefox --headless
     pattern:
       - /.+\.e2e\.js$/i
-    screenshot:
-      enabled: true
-      take-on-fail: true
-      path: './tests/e2e/screenshots'
-    browsers:
-      - firefox --headless
+    ignore: ~
 
 ec2_dev:
   root: './ec2'
@@ -44,9 +66,6 @@ ec2_dev:
     version: 0.11.0
     var-files:
       - workspace.dev.tfvars
-    # test:
-    #   plan: './tests/unit/'
-    #   apply: './tests/e2e/'
 
 ec2_prod:
   root: './ec2'
@@ -55,8 +74,34 @@ ec2_prod:
     var-files:
       - workspace.prod.tfvars
 
-e2e:
- root: './tests/e2e/'
+iam_admin_role:
+  root: './iam/roles/admin-role'
+  terraform:
+    version: 0.11.0
+    run-after:
+      - iam_admin_policy
+    var-files:
+      - workspace.default.tfvars
 
-unit:
- root: './tests/unit/'
+iam_power_user_role:
+  root: './iam/roles/power-user-role'
+  terraform:
+    version: 0.11.0
+    run-after:
+      - iam_power_user_policy
+    var-files:
+      - workspace.default.tfvars
+
+iam_admin_policy:
+  root: './iam/policies/admin-policy'
+  terraform:
+    version: 0.11.0
+    var-files:
+      - workspace.default.tfvars
+
+iam_power_user_policy:
+  root: './iam/policies/power-user-policy'
+  terraform:
+    version: 0.11.0
+    var-files:
+      - workspace.default.tfvars
