@@ -4,12 +4,18 @@ $:
     '$.terraform.vars.access_key': 'eval'
     '$.terraform.vars.secret_key': 'eval'
     '$.terraform.vars.region': 'eval'
+    '$.cnci.token': 'eval'
+    '$.cnci.ci.options.user': 'eval'
+    '$.cnci.ci.options.token': 'eval'
+    '$.cnci.ci.options.jobName': 'eval'
+    '$.cnci.ci.options.buildNumber': 'eval'
   emit:
     pattern:
       - /.+\.js$/i
     ignore:
       - /^(.*\/)?node_modules(\/?$)?/i
   terraform:
+    version: 0.11.0
     resource: '.resource'
     cache: false
     plan: true
@@ -20,6 +26,8 @@ $:
       access_key: 'process.env.AWS_ACCESS_KEY_ID'
       secret_key: 'process.env.AWS_SECRET_ACCESS_KEY'
       region: 'process.env.AWS_DEFAULT_REGION'
+    var-files:
+      - workspace.default.tfvars
     test:
       plan: './tests/unit/'
       apply: './tests/e2e/'
@@ -60,48 +68,42 @@ $:
       - /.+\.e2e\.js$/i
     ignore: ~
 
+  cnci:
+    token: 'process.env.token'
+    ci:
+      provider: jenkins
+      options:
+        user: 'process.env.JENKINS_USER'
+        token: 'process.env.JENKINS_TOKEN'
+        jobName: 'process.env.JOB_NAME'
+        buildNumber: 'process.env.BUILD_NUMBER'
+
 ec2_dev:
   root: './ec2'
   terraform:
-    version: 0.11.0
     var-files:
       - workspace.dev.tfvars
 
 ec2_prod:
   root: './ec2'
   terraform:
-    version: 0.11.0
     var-files:
       - workspace.prod.tfvars
 
 iam_admin_role:
   root: './iam/roles/admin-role'
   terraform:
-    version: 0.11.0
     run-after:
       - iam_admin_policy
-    var-files:
-      - workspace.default.tfvars
 
 iam_power_user_role:
   root: './iam/roles/power-user-role'
   terraform:
-    version: 0.11.0
     run-after:
       - iam_power_user_policy
-    var-files:
-      - workspace.default.tfvars
 
 iam_admin_policy:
   root: './iam/policies/admin-policy'
-  terraform:
-    version: 0.11.0
-    var-files:
-      - workspace.default.tfvars
 
 iam_power_user_policy:
   root: './iam/policies/power-user-policy'
-  terraform:
-    version: 0.11.0
-    var-files:
-      - workspace.default.tfvars
