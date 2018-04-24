@@ -3,7 +3,8 @@ variable "region" {
 }
 
 variable "profile" {
-  type = "string"
+  type    = "string"
+  default = "saml"
 }
 
 variable "account_id" {

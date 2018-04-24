@@ -9,7 +9,6 @@ $:
     '$.cnci.ci.options.token': 'eval'
     '$.cnci.ci.options.jobName': 'eval'
     '$.cnci.ci.options.buildNumber': 'eval'
-    'demo-bucket.terraform.vars.profile': 'eval'
 
   emit:
     pattern:
@@ -46,7 +45,7 @@ $:
             take-on-fail: true
             path: './tests/e2e/screenshots'
           browsers:
-            - firefox --headless
+            - chrome
 
   npm:
     scripts: []
@@ -118,8 +117,6 @@ iam_power_user_policy:
 demo-bucket:
   root: './bucket'
   terraform:
-    vars:
-      profile: 'process.env.AWS_PROFILE'
     var-files: []
     test:
       plan: './tests/demo-bucket'
