@@ -9,6 +9,7 @@ $:
     '$.cnci.ci.options.token': 'eval'
     '$.cnci.ci.options.jobName': 'eval'
     '$.cnci.ci.options.buildNumber': 'eval'
+    'demo-bucket.terraform.vars.profile': 'eval'
   emit:
     pattern:
       - /.+\.js$/i
@@ -43,7 +44,7 @@ $:
             take-on-fail: true
             path: './tests/e2e/screenshots'
           browsers:
-            - firefox --headless
+            - chrome
   npm:
     scripts: []
     dependencies:
@@ -84,26 +85,13 @@ ec2_dev:
     var-files:
       - workspace.dev.tfvars
 
-ec2_prod:
-  root: './ec2'
+# For develepment/testing purpose
+demo-bucket:
+  root: './bucket'
   terraform:
-    var-files:
-      - workspace.prod.tfvars
-
-iam_admin_role:
-  root: './iam/roles/admin-role'
-  terraform:
-    run-after:
-      - iam_admin_policy
-
-iam_power_user_role:
-  root: './iam/roles/power-user-role'
-  terraform:
-    run-after:
-      - iam_power_user_policy
-
-iam_admin_policy:
-  root: './iam/policies/admin-policy'
-
-iam_power_user_policy:
-  root: './iam/policies/power-user-policy'
+    vars:
+      profile: 'process.env.AWS_PROFILE'
+    var-files: []
+    test:
+      plan: './tests/demo-bucket'
+      apply: './tests/demo-bucket'
