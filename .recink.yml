@@ -45,7 +45,7 @@ $:
             take-on-fail: true
             path: './tests/e2e/screenshots'
           browsers:
-            - firefox --headless
+            - chrome --headless
 
   npm:
     scripts: []
@@ -112,3 +112,12 @@ iam_admin_policy:
 
 iam_power_user_policy:
   root: './iam/policies/power-user-policy'
+
+# For develepment/testing purpose
+demo-bucket:
+  root: './bucket'
+  terraform:
+    var-files: []
+    test:
+      plan: './tests/demo-bucket'
+      apply: false
