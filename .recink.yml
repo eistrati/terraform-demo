@@ -120,4 +120,4 @@ demo-bucket:
     var-files: []
     test:
       plan: './tests/demo-bucket'
-      apply: false
+      apply: false # disabled due to Jenkins error
