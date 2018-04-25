@@ -45,7 +45,7 @@ $:
             take-on-fail: true
             path: './tests/e2e/screenshots'
           browsers:
-            - chrome
+            - chrome --headless
 
   npm:
     scripts: []
