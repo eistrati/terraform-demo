@@ -5,9 +5,9 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias  = "account_01"
-  profile  = "account_01"
-  region = "us-east-1"
+  alias   = "account_01"
+  region  = "us-east-1"
+  profile = "account_01"
 
   assume_role {
     role_arn = "arn:aws:iam::${var.aws_account_id_01}:role/ClarivateCrossAccountRole"
@@ -16,9 +16,9 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias  = "account_02"
-  profile  = "account_02"
-  region = "us-east-1"
+  alias   = "account_02"
+  region  = "us-east-1"
+  profile = "account_02"
 
   assume_role {
     role_arn = "arn:aws:iam::${var.aws_account_id_02}:role/ClarivateCrossAccountRole"
