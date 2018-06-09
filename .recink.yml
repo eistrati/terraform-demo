@@ -45,7 +45,7 @@ $:
             take-on-fail: true
             path: './tests/e2e/screenshots'
           browsers:
-            - chrome --headless
+            - firefox --headless
 
   npm:
     scripts: []
@@ -120,4 +120,4 @@ demo-bucket:
     var-files: []
     test:
       plan: './tests/demo-bucket'
-      apply: false
+      apply: './tests/demo-bucket'
